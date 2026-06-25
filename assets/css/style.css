@@ -854,3 +854,29 @@ a {
     justify-content: space-between;
   }
 }
+
+/* Dashboard Footer */
+.dashboard-footer {
+  margin-top: auto;
+  padding: 24px 0 8px 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.dashboard-footer strong {
+  color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  .dashboard-footer {
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 12px;
+  }
+}
