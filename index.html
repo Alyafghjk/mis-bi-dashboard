@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIS Business Intelligence Dashboard</title>
+  <meta name="description" content="A premium glassmorphic management information system and business intelligence dashboard featuring real-time transactional analytics.">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Premium Ambient Glow Elements -->
+  <div class="ambient-background">
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+  </div>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <i data-lucide="trending-up"></i>
+      </div>
+      <div class="brand-name">AetherBI</div>
+    </div>
+    
+    <ul class="sidebar-menu">
+      <li class="menu-item active">
+        <a href="#dashboard">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#transactions">
+          <i data-lucide="arrow-left-right"></i>
+          <span>Transactions</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#analytics">
+          <i data-lucide="bar-chart-2"></i>
+          <span>Analytics</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#reports">
+          <i data-lucide="file-text"></i>
+          <span>Reports</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#settings">
+          <i data-lucide="settings"></i>
+          <span>Settings</span>
+        </a>
+      </li>
+    </ul>
+    
+    <div class="sidebar-footer">
+      <div class="user-profile-sm">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="User Profile" class="user-avatar">
+        <div class="user-info">
+          <span class="user-name">Alya N.</span>
+          <span class="user-role">Finance Director</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Container -->
+  <main class="main-container">
+    
+    <!-- Top Header Bar -->
+    <header class="header-bar">
+      <div class="page-title">
+        <h1>Overview Dashboard</h1>
+        <p>Real-time analytics and Management Information System</p>
+      </div>
+      
+      <div class="header-actions">
+        <!-- Mobile Sidebar Toggle -->
+        <button class="mobile-header-toggle" id="mobileSidebarToggle" aria-label="Toggle Navigation Menu">
+          <i data-lucide="menu"></i>
+        </button>
+        
+        <!-- Theme Toggle -->
+        <button class="btn-toggle-theme" id="themeToggle" title="Toggle Theme" aria-label="Toggle Light/Dark Theme">
+          <i data-lucide="sun"></i>
+        </button>
+        
+        <!-- Export CSV -->
+        <button class="btn-export" id="exportBtn" title="Export current filtered data to CSV" aria-label="Export Data">
+          <i data-lucide="download"></i>
+          <span>Export CSV</span>
+        </button>
+      </div>
+    </header>
+    
+    <!-- KPI Metrics Grid -->
+    <section class="metrics-grid" aria-label="Key Performance Indicators">
+      <!-- Total Revenue KPI -->
+      <article class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Total Revenue</span>
+          <div class="kpi-icon-container">
+            <i data-lucide="dollar-sign"></i>
+          </div>
+        </div>
+        <div class="kpi-body">
+          <span class="kpi-value" id="revenueKPI">$0.00</span>
+          <span class="kpi-trend trend-up">
+            <i data-lucide="trending-up" style="width: 14px; height: 14px;"></i>
+            <span>+12.4%</span>
+            <span class="trend-label">vs last month</span>
+          </span>
+        </div>
+      </article>
+      
+      <!-- Total Transactions KPI -->
+      <article class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Transactions</span>
+          <div class="kpi-icon-container info-accent">
+            <i data-lucide="shopping-bag"></i>
+          </div>
+        </div>
+        <div class="kpi-body">
+          <span class="kpi-value" id="transactionsKPI">0</span>
+          <span class="kpi-trend trend-up">
+            <i data-lucide="trending-up" style="width: 14px; height: 14px;"></i>
+            <span>+8.2%</span>
+            <span class="trend-label">vs last month</span>
+          </span>
+        </div>
+      </article>
+      
+      <!-- Average Order Value (AOV) KPI -->
+      <article class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Avg Order Value</span>
+          <div class="kpi-icon-container warning-accent">
+            <i data-lucide="credit-card"></i>
+          </div>
+        </div>
+        <div class="kpi-body">
+          <span class="kpi-value" id="aovKPI">$0.00</span>
+          <span class="kpi-trend trend-down">
+            <i data-lucide="trending-down" style="width: 14px; height: 14px;"></i>
+            <span>-2.1%</span>
+            <span class="trend-label">vs last month</span>
+          </span>
+        </div>
+      </article>
+      
+      <!-- Transaction Success Rate KPI -->
+      <article class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Success Rate</span>
+          <div class="kpi-icon-container success-accent">
+            <i data-lucide="check-circle"></i>
+          </div>
+        </div>
+        <div class="kpi-body">
+          <span class="kpi-value" id="successKPI">0.0%</span>
+          <span class="kpi-trend trend-up">
+            <i data-lucide="trending-up" style="width: 14px; height: 14px;"></i>
+            <span>+0.5%</span>
+            <span class="trend-label">vs last week</span>
+          </span>
+        </div>
+      </article>
+    </section>
+    
+    <!-- Analytics Charts Section -->
+    <section class="charts-grid" aria-label="Visual Analytics Charts">
+      <!-- Line Chart for Revenue Trends -->
+      <article class="chart-card">
+        <div class="chart-header">
+          <div class="chart-title">
+            <h3>Revenue History</h3>
+            <p>Daily breakdown of completed transaction amounts</p>
+          </div>
+        </div>
+        <div class="chart-body">
+          <canvas id="revenueTrendChart"></canvas>
+        </div>
+      </article>
+      
+      <!-- Doughnut Chart for Categories -->
+      <article class="chart-card">
+        <div class="chart-header">
+          <div class="chart-title">
+            <h3>Category Breakdown</h3>
+            <p>Sales allocation by product department</p>
+          </div>
+        </div>
+        <div class="chart-body">
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </article>
+    </section>
+    
+    <!-- Transactions Database Section -->
+    <section class="transactions-card" id="transactionsSection">
+      <div class="chart-header">
+        <div class="chart-title">
+          <h3>Transaction Records</h3>
+          <p>Search, filter, and audit business operations data</p>
+        </div>
+      </div>
+      
+      <!-- Table Filters and Search -->
+      <div class="filters-bar">
+        <!-- Search bar -->
+        <div class="search-wrapper">
+          <i data-lucide="search"></i>
+          <input type="text" id="searchQuery" class="input-search" placeholder="Search customer or transaction ID..." aria-label="Search transactions">
+        </div>
+        
+        <!-- Category Filter -->
+        <select id="categoryFilter" class="filter-select" aria-label="Filter by category">
+          <option value="all">All Categories</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Home & Kitchen">Home & Kitchen</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Books & Stationery">Books & Stationery</option>
+          <option value="Sports & Outdoors">Sports & Outdoors</option>
+        </select>
+        
+        <!-- Status Filter -->
+        <select id="statusFilter" class="filter-select" aria-label="Filter by status">
+          <option value="all">All Statuses</option>
+          <option value="Completed">Completed</option>
+          <option value="Pending">Pending</option>
+          <option value="Failed">Failed</option>
+          <option value="Refunded">Refunded</option>
+        </select>
+        
+        <!-- Timeframe Filter -->
+        <select id="timeframeFilter" class="filter-select" aria-label="Filter by date range">
+          <option value="all">All Time</option>
+          <option value="7d">Last 7 Days</option>
+          <option value="30d">Last 30 Days</option>
+          <option value="ytd">Year to Date</option>
+        </select>
+        
+        <!-- Popular Payment Methods Chart Selector/Helper -->
+        <div class="chart-body" style="min-height: 42px; padding: 0;">
+          <canvas id="paymentChart" style="max-height: 42px; width: 100%;"></canvas>
+        </div>
+      </div>
+      
+      <!-- Custom Data Table -->
+      <div class="table-wrapper">
+        <table class="custom-table" id="transactionTable">
+          <thead>
+            <tr>
+              <th data-sort="id">Transaction ID &darr;</th>
+              <th data-sort="timestamp">Date</th>
+              <th data-sort="customer">Customer</th>
+              <th data-sort="category">Category</th>
+              <th data-sort="amount">Amount</th>
+              <th data-sort="status">Status</th>
+              <th data-sort="paymentMethod">Payment Method</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Dynamic transactions go here -->
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Pagination Controls -->
+      <div class="pagination-container">
+        <div class="pagination-info" id="paginationInfo">
+          Showing 0 to 0 of 0 entries
+        </div>
+        <div class="pagination-controls">
+          <button class="btn-page" id="prevPageBtn" aria-label="Previous Page" title="Previous Page">
+            <i data-lucide="chevron-left" style="width: 18px; height: 18px;"></i>
+          </button>
+          <button class="btn-page" id="nextPageBtn" aria-label="Next Page" title="Next Page">
+            <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <!-- Setup Lucide and Load Controller -->
+  <script>
+    // Initialize icons globally
+    lucide.createIcons();
+  </script>
+  <script src="./assets/js/dashboard.js"></script>
+</body>
+</html>
